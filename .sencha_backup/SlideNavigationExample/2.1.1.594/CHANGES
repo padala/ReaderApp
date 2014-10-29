@@ -1,0 +1,43 @@
+0.2.2 (Development)
+===================
+  * Added: The initially selected item can now be defined via the addition of
+    ``selected: true`` configuration option of an item in the list.  Thanks
+    to acasaccia for the patch.
+  * Fixed: Tapping on selected item in list closes the container.
+  * Added: More intelligent handling of container dragging.  Once vertical
+    scrolling is detected, vertical "scroll-lock" is enabled.  Similarly,
+    once horizontal dragging is detected, any underlying containers with
+    scrolling behaviors are temporarily disabled from scrolling.
+  * Added: Container dragging now works when the container is open (i.e. you
+    can drag on the masked container).
+  * Added: Drag behavior to container via ``containerSlideDelay`` config option.
+    This means you are no longer limited to dragging on the toolbar only.  This
+    more closely mimics the behavior of the FB menu.
+
+
+0.2.1 (Jan 31, 2013)
+====================
+  * Added ability to dock the navigation list to the right or left of the screen.
+    Thanks to ElMassimo for the work on this.
+  * #7: Stop auto-focus of elements beneath slideButton.
+  * #9: Added `slideButtonDefaults` config option.
+
+
+0.2.0 (Dec 10, 2012)
+====================
+  * Updated to work with Sencha Touch 2.1 and is no longer compatible
+    with earlier versions.
+  * CSS for styling the drop-shadow of the container when open is now
+    configurable via the ``shadowStyle`` configuration variable.
+  * Added events and actions.
+  * When the active item is changed and ``closeOnSelect`` is ``true``,
+    the container will not close until the new item has been fully
+    painted.  This makes the animation much smoother and generally looks
+    nicer.
+  * Items can now be 'disabled' (masked) when the container is open.  To
+    enable this, the ``itemMask`` variable should be set to ``true`` or a
+    valid ``Object`` for creating a new mask.  Additionally, any items that
+    should be masked must have the configuration variable ``maskOnOpen`` set
+    to ``true``.
+  * Removed ``onContainerDrag`` as it is not needed.  This should make
+    dragging slightly smoother.
