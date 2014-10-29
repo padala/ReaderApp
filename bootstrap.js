@@ -658,6 +658,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "SlideNavigationExample.controller.Main": [],
+  "SlideNavigationExample.view.BottomTabs": [],
   "SlideNavigationExample.view.Main": [],
   "TouchCalendarViewModel": []
 });
@@ -1494,6 +1495,9 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "SlideNavigationExample.controller.Main": [],
+  "SlideNavigationExample.view.BottomTabs": [
+    "widget.bottomTabs"
+  ],
   "SlideNavigationExample.view.Main": [],
   "TouchCalendarViewModel": []
 });
