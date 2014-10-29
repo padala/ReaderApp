@@ -7,11 +7,12 @@
  */
 Ext.define("SlideNavigationExample.controller.Main", {
     extend: 'Ext.app.Controller',
-    
+    loggedIn: true,
+
     config: {
         refs: {
-            slideNav:                   'slidenavigationview',
-            moviePosterListContainer:   'slidenavigationview container[title="Item 8"]'
+            slideNav: 'slidenavigationview',
+            moviePosterListContainer: 'slidenavigationview container[title="Item 8"]'
         },
 
         control: {
@@ -20,15 +21,18 @@ Ext.define("SlideNavigationExample.controller.Main", {
              */
             slideNav: {
                 open: function(nav, position, duration) {
-                    console.log('Container open (position='+position+',duration='+duration+')');
+                    console.log('Container open (position=' + position + ',duration=' + duration + ')');
+                    if (this.loggedIn) {
+                        // this.getMoviePosterListContainer.hide();
+                    }
                 },
 
                 close: function(nav, position, duration) {
-                    console.log('Container close (position='+position+',duration='+duration+')');
+                    console.log('Container close (position=' + position + ',duration=' + duration + ')');
                 },
 
                 select: function(nav, item, index) {
-                    console.log('Selected item (index='+index+')');
+                    console.log('Selected item (index=' + index + ')');
                 },
 
                 opened: function(nav) {

@@ -23,6 +23,7 @@
  */
 
 Ext.Loader.addClassPathMappings({
+  "Event": "app/view/Main.js",
   "Ext": "touch/src",
   "Ext-more": "touch/src/core/Ext-more.js",
   "Ext.DomHelper": "touch/src/dom/Helper.js",
@@ -39,10 +40,21 @@ Ext.Loader.addClassPathMappings({
   "Ext.device.Purchases.Product": "touch/src/device/purchases/Sencha.js",
   "Ext.device.Purchases.Purchase": "touch/src/device/purchases/Sencha.js",
   "Ext.draw.engine.SvgContext.Gradient": "touch/src/draw/engine/SvgContext.js",
+  "Ext.util.Region.partial": "ux/Ext.ux.TouchCalendarEvents.js",
   "Ext.ux": "ux",
-  "SlideNavigationExample": "app"
+  "Ext.ux.CalendarEventBarModel": "ux/Ext.ux.TouchCalendarEvents.js",
+  "Ext.ux.TouchCalendarDayEvents": "ux/Ext.ux.TouchCalendarDayEvents.js",
+  "Ext.ux.TouchCalendarEvents": "ux/Ext.ux.TouchCalendarEvents.js",
+  "Ext.ux.TouchCalendarEventsBase": "ux/Ext.ux.TouchCalendarEventsBase.js",
+  "Ext.ux.TouchCalendarMonthEvents": "ux/Ext.ux.TouchCalendarMonthEvents.js",
+  "Ext.ux.TouchCalendarSimpleEvents": "ux/Ext.ux.TouchCalendarSimpleEvents.js",
+  "Ext.ux.TouchCalendarView": "ux/Ext.ux.TouchCalendarView.js",
+  "Ext.ux.TouchCalendarWeekEvents": "ux/Ext.ux.TouchCalendarWeekEvents.js",
+  "SlideNavigationExample": "app",
+  "TouchCalendarViewModel": "ux/Ext.ux.TouchCalendarView.js"
 });
 Ext.ClassManager.addNameAlternateMappings({
+  "Event": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
   "Ext.ActionSheet": [],
@@ -612,6 +624,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.util.Point": [],
   "Ext.util.PositionMap": [],
   "Ext.util.Region": [],
+  "Ext.util.Region.partial": [],
   "Ext.util.SizeMonitor": [],
   "Ext.util.Sortable": [],
   "Ext.util.Sorter": [],
@@ -631,15 +644,25 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.util.translatable.CssTransform": [],
   "Ext.util.translatable.Dom": [],
   "Ext.util.translatable.ScrollPosition": [],
+  "Ext.ux.CalendarEventBarModel": [],
+  "Ext.ux.TouchCalendarDayEvents": [],
+  "Ext.ux.TouchCalendarEvents": [],
+  "Ext.ux.TouchCalendarEventsBase": [],
+  "Ext.ux.TouchCalendarMonthEvents": [],
+  "Ext.ux.TouchCalendarSimpleEvents": [],
+  "Ext.ux.TouchCalendarView": [],
+  "Ext.ux.TouchCalendarWeekEvents": [],
   "Ext.ux.slidenavigation.View": [],
   "Ext.viewport.Android": [],
   "Ext.viewport.Default": [],
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "SlideNavigationExample.controller.Main": [],
-  "SlideNavigationExample.view.Main": []
+  "SlideNavigationExample.view.Main": [],
+  "TouchCalendarViewModel": []
 });
 Ext.ClassManager.addNameAliasMappings({
+  "Event": [],
   "Ext.AbstractComponent": [],
   "Ext.AbstractManager": [],
   "Ext.ActionSheet": [
@@ -1431,6 +1454,7 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.util.Point": [],
   "Ext.util.PositionMap": [],
   "Ext.util.Region": [],
+  "Ext.util.Region.partial": [],
   "Ext.util.SizeMonitor": [],
   "Ext.util.Sortable": [],
   "Ext.util.Sorter": [],
@@ -1450,6 +1474,16 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.util.translatable.CssTransform": [],
   "Ext.util.translatable.Dom": [],
   "Ext.util.translatable.ScrollPosition": [],
+  "Ext.ux.CalendarEventBarModel": [],
+  "Ext.ux.TouchCalendarDayEvents": [],
+  "Ext.ux.TouchCalendarEvents": [],
+  "Ext.ux.TouchCalendarEventsBase": [],
+  "Ext.ux.TouchCalendarMonthEvents": [],
+  "Ext.ux.TouchCalendarSimpleEvents": [],
+  "Ext.ux.TouchCalendarView": [
+    "widget.touchcalendarview"
+  ],
+  "Ext.ux.TouchCalendarWeekEvents": [],
   "Ext.ux.slidenavigation.View": [
     "widget.slidenavigationview"
   ],
@@ -1460,7 +1494,8 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "SlideNavigationExample.controller.Main": [],
-  "SlideNavigationExample.view.Main": []
+  "SlideNavigationExample.view.Main": [],
+  "TouchCalendarViewModel": []
 });
 
 

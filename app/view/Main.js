@@ -1,12 +1,101 @@
+Ext.define("Event", {
+    extend: "Ext.data.Model",
+    config: {
+        fields: [{
+            name: 'event',
+            type: 'string'
+        }, {
+            name: 'title',
+            type: 'string'
+        }, {
+            name: 'start',
+            type: 'date',
+            dateFormat: 'c'
+        }, {
+            name: 'end',
+            type: 'date',
+            dateFormat: 'c'
+        }, {
+            name: 'css',
+            type: 'string'
+        }]
+    }
+});
+
+// always base events from today
+var day = (new Date()).getDate(),
+    month = (new Date()).getMonth(),
+    year = (new Date()).getFullYear();
+
+var eventStore = Ext.create('Ext.data.Store', {
+    model: 'Event',
+    data: [{
+        event: '8.03 - 8:05',
+        title: 'Event Name 1',
+        start: new Date(year, month, day, 8, 3),
+        end: new Date(year, month, day, 8, 5),
+        css: 'red'
+    }, {
+        event: '7:00 - 7:05',
+        title: 'Event Name 2',
+        start: new Date(year, month, day, 7, 0),
+        end: new Date(year, month, day, 7, 5),
+        css: 'blue'
+    }, {
+        event: '7:00 - 7:10',
+        title: 'Event Name 3',
+        start: new Date(year, month, day, 7, 0),
+        end: new Date(year, month, day, 7, 10),
+        css: 'green'
+    }, {
+        event: '7:06 - 7:15',
+        title: 'Event Name 4',
+        start: new Date(year, month, day, 7, 6),
+        end: new Date(year, month, day, 7, 15),
+        css: 'green'
+    }, {
+        event: '19.00 - 20:30',
+        title: 'Event Name 5',
+        start: new Date(year, month, day - 2, 19, 0),
+        end: new Date(year, month, day - 2, 20, 30),
+        css: 'blue'
+    }, {
+        event: '13:15 - 14:05',
+        title: 'Event Name 6',
+        start: new Date(year, month, day - 11, 13, 15),
+        end: new Date(year, month, day - 11, 14, 5),
+        css: 'blue'
+    }, {
+        event: '15:00 - 16:10',
+        title: 'Event Name 7',
+        start: new Date(year, month, day + 2, 15, 0),
+        end: new Date(year, month, day + 2, 16, 10),
+        css: 'green'
+    }, {
+        event: '00:00 - 00:00',
+        title: 'Event Name 8',
+        start: new Date(year, month, day + 6, 0, 0),
+        end: new Date(year, month, day + 7, 0, 0),
+        css: 'red'
+    }]
+});
+// var calendarView = Ext.define('touchCalendar', {
+//     extend: 'Ext.ux.TouchCalendarView',
+//     value: new Date(),
+
+//     store: eventStore,
+//     plugins: [Ext.create('Ext.ux.TouchCalendarSimpleEvents')]
+// });
 Ext.define("SlideNavigationExample.view.Main", {
     extend: 'Ext.ux.slidenavigation.View',
-
+    id: "slidenavigationview",
     requires: [
         'Ext.Container',
         'Ext.MessageBox',
         'Ext.Panel',
         'Ext.Toolbar',
-        'Ext.event.publisher.Dom'
+        'Ext.event.publisher.Dom', 'Ext.ux.TouchCalendarView',
+        'Ext.ux.TouchCalendarSimpleEvents'
     ],
 
     config: {
@@ -56,17 +145,18 @@ Ext.define("SlideNavigationExample.view.Main", {
          */
         list: {
             maxDrag: 400,
-            width: 200,
+            width: 300,
             items: [{
                 xtype: 'toolbar',
                 docked: 'top',
                 ui: 'light',
-                title: {
-                    title: 'Distributed Rater',
-                    centered: false,
-                    width: 300,
-                    left: 0
-                }
+                html: '<img width="292px" src="http://apcentral.collegeboard.com/images/cbLogo-local.png"/>'
+                    // title: {
+                    //     title: 'Distributed Rater',
+                    //     centered: false,
+                    //     width: 200,
+                    //     left: 0
+                    // }
 
                 /**
                  *  Here's an example of how to add a different type of
@@ -142,12 +232,27 @@ Ext.define("SlideNavigationExample.view.Main", {
                 title: 'Schedule',
                 docked: 'top'
             }, {
-                xtype: 'panel',
-                layout: 'card',
-                styleHtmlContent: true,
-                html: '<p>The toolbar on this page doesn\'t have a slideButton, so you\'ll have to "slide" the toolbar to view the menu.</p><p>Donec neque augue, fermentum quis tempor quis, lacinia ut augue. Sed dictum risus id arcu vehicula sed porttitor nisi egestas. Aliquam arcu felis, sagittis vel pulvinar vitae, ultricies a augue. Praesent eget erat tellus. Aenean nec dui magna. Cras sagittis, diam vel bibendum mattis, neque purus placerat turpis, sit amet tempor neque nisl non eros. Pellentesque id orci nulla, nec eleifend quam. Proin ut magna turpis. Phasellus erat urna, faucibus in tempus bibendum, ultrices a mauris. Nulla semper ante sed est placerat sagittis. Nam ut vestibulum nulla. Sed sit amet aliquet urna. Morbi est velit, vulputate quis pretium vitae, lobortis sed ligula.</p>',
-                scrollable: true,
-                maskOnOpen: true
+                xtype: 'touchcalendarview',
+                value: new Date(),
+                // minDate: Ext.Date.add(new Date(), Ext.Date.DAY, -46),
+                // maxDate: Ext.Date.add(new Date(), Ext.Date.DAY, 60),
+                // viewMode: 'day',
+                // weekStart: 0,
+
+                // store: eventStore,
+                // eventStore: eventStore,
+                // plugins: [Ext.create('Ext.ux.TouchCalendarSimpleEvents')]
+                // plugins: [Ext.create('Ext.ux.TouchCalendarEvents', {
+                //     eventHeight: 'auto',
+                //     eventBarTpl: '<div>{event}</div><div>{title}</div>'
+                // })]
+
+                // layout: 'card',
+                // styleHtmlContent: true,
+                // html: '<p>The toolbar on this page doesn\'t have a slideButton, so you\'ll have to "slide" the toolbar to view the menu.</p><p>Donec neque augue, fermentum quis tempor quis, lacinia ut augue. Sed dictum risus id arcu vehicula sed porttitor nisi egestas. Aliquam arcu felis, sagittis vel pulvinar vitae, ultricies a augue. Praesent eget erat tellus. Aenean nec dui magna. Cras sagittis, diam vel bibendum mattis, neque purus placerat turpis, sit amet tempor neque nisl non eros. Pellentesque id orci nulla, nec eleifend quam. Proin ut magna turpis. Phasellus erat urna, faucibus in tempus bibendum, ultrices a mauris. Nulla semper ante sed est placerat sagittis. Nam ut vestibulum nulla. Sed sit amet aliquet urna. Morbi est velit, vulputate quis pretium vitae, lobortis sed ligula.</p>',
+                // scrollable: true,
+                // maskOnOpen: true
+
             }],
             // handler: function() {
             //     Ext.Msg.alert('Item 2', 'You clicked Item 2.');
@@ -308,6 +413,7 @@ Ext.define("SlideNavigationExample.view.Main", {
             }]
         }, {
             title: 'Item 8',
+            itemId: "item8",
             group: 'Social',
             order: 0,
 
