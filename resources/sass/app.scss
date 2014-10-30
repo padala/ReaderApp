@@ -1,6 +1,8 @@
 // The following two lines import the default Sencha Touch theme. If you are building
 // a new theme, remove them and the add your own CSS on top of the base CSS (which
 // is already included in your app.json file).
+$base-color: #184b72 !default;
+//$active-color: #fbffff !default;
 @import 'sencha-touch/default';
 @import 'sencha-touch/default/all';
 @import 'touchCalendarView';
@@ -16,4 +18,7 @@
 		font-size: 18px !important;
 		padding: 10px !important;
 	}
+}
+.x-tabbar-dark .x-tab-active {
+	color:#fff!important;
 }
